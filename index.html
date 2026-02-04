@@ -51,20 +51,7 @@ body {
   }
 }
 
-/* دکمه موزیک */
-.play-btn {
-  margin-top: 20px;
-  padding: 10px 16px;
-  border-radius: 20px;
-  border: none;
-  background: linear-gradient(180deg, #ffd6e8, #ffffff);
-  font-size: 0.9rem;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-/* قلب */
+/* قلب‌ها */
 .heart {
   position: absolute;
   width: 20px;
@@ -87,13 +74,13 @@ body {
 .heart::before { top: -10px; left: 0; }
 .heart::after { left: 10px; top: 0; }
 
-/* ستاره */
+/* ستاره‌ها */
 .star {
   position: absolute;
   width: 18px;
   height: 18px;
   background: red;
-  opacity: 0.6;
+  opacity: 0.4; /* کمتر شد */
   clip-path: polygon(
     50% 0%,
     61% 35%,
@@ -116,13 +103,27 @@ audio { display: none; }
 
 <div class="container">
 
-  <!-- دکور -->
+  <!-- قلب‌ها -->
   <div class="heart" style="top:8%; left:6%;"></div>
   <div class="heart" style="top:22%; right:8%; transform:rotate(25deg);"></div>
   <div class="heart" style="top:60%; left:10%; transform:rotate(-20deg);"></div>
+  <div class="heart" style="top:12%; right:15%; transform:rotate(15deg);"></div>
+  <div class="heart" style="top:45%; left:30%; transform:rotate(-10deg);"></div>
+  <div class="heart" style="top:55%; right:25%; transform:rotate(5deg);"></div>
+  <div class="heart" style="top:75%; left:18%; transform:rotate(-30deg);"></div>
+  <div class="heart" style="top:80%; right:8%; transform:rotate(20deg);"></div>
+  <div class="heart" style="top:65%; left:50%; transform:rotate(-15deg);"></div>
+  <div class="heart" style="top:30%; right:35%; transform:rotate(10deg);"></div>
 
+  <!-- ستاره‌ها -->
   <div class="star" style="top:35%; right:20%;"></div>
   <div class="star" style="top:70%; right:12%;"></div>
+  <div class="star" style="top:25%; left:25%;"></div>
+  <div class="star" style="top:50%; left:40%;"></div>
+  <div class="star" style="top:65%; right:50%;"></div>
+  <div class="star" style="top:40%; right:45%;"></div>
+  <div class="star" style="top:60%; left:60%;"></div>
+  <div class="star" style="top:15%; right:30%;"></div>
 
   <!-- متن -->
   <div class="text">
@@ -138,22 +139,16 @@ audio { display: none; }
     <div class="line" style="animation-delay:8.6s">of our acquaintance.</div>
   </div>
 
-  <button class="play-btn" id="playBtn">▶ Play our song</button>
-
-  <audio id="music">
-    <source src="music.mp3" type="audio/mpeg">
+  <audio id="music" autoplay>
+    <source src="for-you-to-infinity.mp3" type="audio/mpeg">
   </audio>
 
 </div>
 
 <script>
-setTimeout(() => {
-  document.getElementById("playBtn").style.opacity = "1";
-}, 9500);
-
-document.getElementById("playBtn").addEventListener("click", () => {
-  document.getElementById("music").play();
-});
+  // خودکار پلی موزیک بعد باز شدن صفحه
+  const music = document.getElementById("music");
+  music.play().catch(()=>{}); // catch جلوگیری از ارور autoplay
 </script>
 
 </body>
